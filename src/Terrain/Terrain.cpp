@@ -60,16 +60,6 @@ void Terrain::CreateTerrain(float resolution, float size)
     SetupBuffers();
 }
 
-void Terrain::PerlinNoise(float x, float z) {
-    int x0 = static_cast<int>(x);
-    int y0 = static_cast<int>(z);
-    int x1 = x0 + 1;
-    int y1 = y0 + 1;
-
-    float sx = x - static_cast<float>(x0);
-    float sy = z - static_cast<float>(y0);
-
-}
 
 void Terrain::Draw(unsigned int& shader_program)
 {

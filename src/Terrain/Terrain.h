@@ -11,7 +11,6 @@ class Terrain
 {
 public:
 	void CreateTerrain(float resolution, float size);
-	void PerlinNoise(float x, float z);
 	std::vector<Vertex> vertices;
 	std::vector<unsigned int> indices;
 	void Draw(unsigned int& shader_program);
