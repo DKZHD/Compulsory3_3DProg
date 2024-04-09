@@ -10,6 +10,9 @@ class Player;
 class Terrain
 {
 public:
+
+
+
 	void CreateTerrain(float resolution, float size);
 	std::vector<Vertex> vertices;
 	std::vector<unsigned int> indices;

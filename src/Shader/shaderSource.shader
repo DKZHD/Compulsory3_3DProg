@@ -82,6 +82,7 @@ void main()
 	DL.direction=vec3(0, 3, 6);
 	vec3 lightDir = normalize(DL.direction-FragPos);
 	DL.color = vec3(1,1,1);
+
 	DL.ambient = 0.7;
 	float NDL = max(dot(Normal,-lightDir),0.0);
 

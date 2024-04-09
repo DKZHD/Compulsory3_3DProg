@@ -1,13 +1,13 @@
 # ninja log v5
 19	624	7337823343523358	CMakeFiles/Compulsory3.dir/Compulsory3.cpp.obj	6ef2b7e412f8c264
 54	536	7337850920429474	libs/glfw-3.3.9/src/CMakeFiles/glfw.dir/window.c.obj	48a55d2dbbe4f2e
-898	1018	7342846412163774	Compulsory3.exe	53e1568e89e483ea
-10	342	7343115831268340	build.ninja	5956d8cd80398686
+851	966	7343895557801076	Compulsory3.exe	53e1568e89e483ea
+10	342	7343896480720192	build.ninja	5956d8cd80398686
 18	614	7337850921229686	CMakeFiles/Compulsory3.dir/includes/glad.c.obj	59c8a03b213f65b
-16	949	7342805680668379	CMakeFiles/Compulsory3.dir/src/Compulsory3.cpp.obj	b9c36f1a2790576d
+17	926	7343829373914683	CMakeFiles/Compulsory3.dir/src/Compulsory3.cpp.obj	b9c36f1a2790576d
 25	991	7342660872027373	CMakeFiles/Compulsory3.dir/src/Shader/shader.cpp.obj	94c0b18ca879c16f
-26	443	7340152378864696	CMakeFiles/Compulsory3.dir/src/Mesh/Mesh.cpp.obj	49c0826eb988ad32
-16	897	7342846411217801	CMakeFiles/Compulsory3.dir/src/Terrain/Terrain.cpp.obj	760b563cf19b8bbf
+18	851	7343895556920122	CMakeFiles/Compulsory3.dir/src/Mesh/Mesh.cpp.obj	49c0826eb988ad32
+21	964	7343822078776679	CMakeFiles/Compulsory3.dir/src/Terrain/Terrain.cpp.obj	760b563cf19b8bbf
 49	502	7337850919945659	libs/glfw-3.3.9/src/CMakeFiles/glfw.dir/vulkan.c.obj	a533c336ca7d11f3
 743	787	7337850922942735	libs/glfw-3.3.9/src/glfw3.lib	b43bc4bea584a85f
 58	513	7337850919960852	libs/glfw-3.3.9/src/CMakeFiles/glfw.dir/win32_init.c.obj	bcee402196a48724
@@ -23,5 +23,5 @@
 83	541	7337850920494690	libs/glfw-3.3.9/src/CMakeFiles/glfw.dir/wgl_context.c.obj	bb85912c01ad30f7
 162	607	7337850921146687	libs/glfw-3.3.9/src/CMakeFiles/glfw.dir/egl_context.c.obj	f03fbff8051079b9
 502	743	7337850922523599	libs/glfw-3.3.9/src/CMakeFiles/glfw.dir/osmesa_context.c.obj	2727619fc2f7d8e1
-26	723	7342790532737762	CMakeFiles/Compulsory3.dir/src/Camera/camera.cpp.obj	300fd12a44501cb1
-21	916	7342791018088165	CMakeFiles/Compulsory3.dir/src/Mesh/Player.cpp.obj	dee25aea8ed54fda
+20	1003	7343664199112195	CMakeFiles/Compulsory3.dir/src/Camera/camera.cpp.obj	300fd12a44501cb1
+28	953	7343822078651287	CMakeFiles/Compulsory3.dir/src/Mesh/Player.cpp.obj	dee25aea8ed54fda

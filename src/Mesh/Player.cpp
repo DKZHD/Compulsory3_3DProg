@@ -81,24 +81,23 @@ void Player::Create(glm::vec3 position)
 			float z = sphereRadius * std::cos(Theta);
 			if (y <= 0) {
 				vertices.emplace_back(glm::vec3(x, y, z));
-				vertices.back().Normal = glm::vec3(0.f, -1.f, 0.f);
+				vertices.back().Normal = glm::vec3(0.f, 1.f, 0.f);
 			}
 			else {
 				vertices.emplace_back(glm::vec3(x, y+0.4f, z));
-				vertices.back().Normal = glm::vec3(0.f, 1.f, 0.f);
+				vertices.back().Normal = glm::vec3(0.f, -1.f, 0.f);
 			}
 				
 		}
 		int sphereStartIndex = segments+segments;
 		for (int i = 0; i < segments - 1; ++i) {
 			for (int j = 0; j < segments - 1; ++j) {
-				// Calculate the indices of the vertices for the current quad
+
 				int idx0 = sphereStartIndex+i * segments + j;
 				int idx1 = idx0 + 1;
 				int idx2 = sphereStartIndex + ((i + 1) % segments)*segments + j;
 				int idx3 = idx2 + 1;
 
-				// Add indices to form two triangles (forming a quad)
 				indices.push_back(idx0);
 				indices.push_back(idx2);
 				indices.push_back(idx1);
@@ -119,7 +118,7 @@ void Player::Draw(unsigned int& shader_program)
 	model = glm::translate(glm::mat4(1.f), glm::vec3(position.x,position.y+0.15f,position.z));
 	glUniformMatrix4fv(glGetUniformLocation(shader_program, "model"), 1, GL_FALSE, glm::value_ptr(model));
 	glUniform3fv(glGetUniformLocation(shader_program,"material.diffuse"),1, glm::value_ptr(glm::vec3(0.5,0.f,0.f)));
-	glUniform3fv(glGetUniformLocation(shader_program,"material.ambient"),1, glm::value_ptr(glm::vec3(0.7f)));
+	glUniform3fv(glGetUniformLocation(shader_program,"material.ambient"),1, glm::value_ptr(glm::vec3(1.f)));
 	glUniform3fv(glGetUniformLocation(shader_program,"material.specular"),1, glm::value_ptr(glm::vec3(0.2f)));
 	glUniform1f(glGetUniformLocation(shader_program,"material.shininess"),32.f);
 	glDrawElements(GL_TRIANGLES, static_cast<int>(indices.size()), GL_UNSIGNED_INT, nullptr);

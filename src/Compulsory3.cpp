@@ -115,6 +115,8 @@ int main()
 
 	Player player(glm::vec3(3.f,2.f,3.f));
 
+	SphereObject sphere(glm::vec3(5.f, 2.f, 5.f), 32);
+
 	Shader shadowShader;
 	shadowShader.InitProgram("depthSource.shader");
 	shadowShader.Use();
@@ -176,6 +178,7 @@ int main()
 			player.UpdatePosition(glm::vec3(player.GetPosition().x, height.second, player.GetPosition().z));
 		}
 		player.Draw(defaultShader.Program);
+		sphere.Draw(defaultShader.Program);
 		Input(window, camera, player);
 		player.Update(DeltaTime);
 		

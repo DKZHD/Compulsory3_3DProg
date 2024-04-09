@@ -28,7 +28,6 @@ void Terrain::CreateTerrain(float resolution, float size)
 	}
 	for (float i = 0.f; i < size-step;i += step)
     {
-        if (i < size) {
             for (float x = 0.f; x < size - step; x += step)
             {
                 indices.push_back(startIndex);
@@ -50,7 +49,6 @@ void Terrain::CreateTerrain(float resolution, float size)
                 vertices[startIndex].Normal += normal2;
                 startIndex++;
             }
-        }
         startIndex++;
 	}
     for (auto& vertex : vertices)
