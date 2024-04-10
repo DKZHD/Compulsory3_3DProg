@@ -14,10 +14,10 @@ project ("Compulsory3")
 include_directories(includes)
 
 set (SRC
-"src/Compulsory3.cpp" "includes/glad.c" "src/Terrain/Terrain.cpp" "src/Mesh/Mesh.cpp" "src/Shader/shader.cpp" "src/Camera/camera.cpp" "src/Mesh/Player.cpp" "src/Mesh/Path.cpp")
+"src/Compulsory3.cpp" "includes/glad.c" "src/Terrain/Terrain.cpp" "src/Mesh/Mesh.cpp" "src/Shader/shader.cpp" "src/Camera/camera.cpp" "src/Mesh/Player.cpp" "src/Mesh/Path.cpp" "src/Core/Core.cpp")
 
 set(HEADERS
-"src/Compulsory3.h" "src/Terrain/Terrain.h" "src/Mesh/Mesh.h" "src/Shader/shader.h" "src/Camera/camera.h" "src/Mesh/Player.h" "src/Mesh/Path.h")
+"src/Compulsory3.h" "src/Terrain/Terrain.h" "src/Mesh/Mesh.h" "src/Shader/shader.h" "src/Camera/camera.h" "src/Mesh/Player.h" "src/Mesh/Path.h" "src/Core/Core.h")
 
 add_subdirectory(libs/glfw-3.3.9)
 add_executable (Compulsory3 ${SRC} ${HEADERS})

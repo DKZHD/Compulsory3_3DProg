@@ -113,6 +113,14 @@ build CMakeFiles\Compulsory3.dir\src\Mesh\Path.cpp.obj: CXX_COMPILER__Compulsory
   TARGET_COMPILE_PDB = CMakeFiles\Compulsory3.dir\
   TARGET_PDB = Compulsory3.pdb
 
+build CMakeFiles\Compulsory3.dir\src\Core\Core.cpp.obj: CXX_COMPILER__Compulsory3_unscanned_Debug D$:\3DProgramming\Compulsory3\src\Core\Core.cpp || cmake_object_order_depends_target_Compulsory3
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Ob0 /Od /RTC1 -std:c++20 -ZI
+  INCLUDES = -ID:\3DProgramming\Compulsory3\includes -ID:\3DProgramming\Compulsory3\libs\glfw-3.3.9\include
+  OBJECT_DIR = CMakeFiles\Compulsory3.dir
+  OBJECT_FILE_DIR = CMakeFiles\Compulsory3.dir\src\Core
+  TARGET_COMPILE_PDB = CMakeFiles\Compulsory3.dir\
+  TARGET_PDB = Compulsory3.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Compulsory3
@@ -121,7 +129,7 @@ build CMakeFiles\Compulsory3.dir\src\Mesh\Path.cpp.obj: CXX_COMPILER__Compulsory
 #############################################
 # Link the executable Compulsory3.exe
 
-build Compulsory3.exe: CXX_EXECUTABLE_LINKER__Compulsory3_Debug CMakeFiles\Compulsory3.dir\src\Compulsory3.cpp.obj CMakeFiles\Compulsory3.dir\includes\glad.c.obj CMakeFiles\Compulsory3.dir\src\Terrain\Terrain.cpp.obj CMakeFiles\Compulsory3.dir\src\Mesh\Mesh.cpp.obj CMakeFiles\Compulsory3.dir\src\Shader\shader.cpp.obj CMakeFiles\Compulsory3.dir\src\Camera\camera.cpp.obj CMakeFiles\Compulsory3.dir\src\Mesh\Player.cpp.obj CMakeFiles\Compulsory3.dir\src\Mesh\Path.cpp.obj | libs\glfw-3.3.9\src\glfw3.lib || libs\glfw-3.3.9\src\glfw3.lib
+build Compulsory3.exe: CXX_EXECUTABLE_LINKER__Compulsory3_Debug CMakeFiles\Compulsory3.dir\src\Compulsory3.cpp.obj CMakeFiles\Compulsory3.dir\includes\glad.c.obj CMakeFiles\Compulsory3.dir\src\Terrain\Terrain.cpp.obj CMakeFiles\Compulsory3.dir\src\Mesh\Mesh.cpp.obj CMakeFiles\Compulsory3.dir\src\Shader\shader.cpp.obj CMakeFiles\Compulsory3.dir\src\Camera\camera.cpp.obj CMakeFiles\Compulsory3.dir\src\Mesh\Player.cpp.obj CMakeFiles\Compulsory3.dir\src\Mesh\Path.cpp.obj CMakeFiles\Compulsory3.dir\src\Core\Core.cpp.obj | libs\glfw-3.3.9\src\glfw3.lib || libs\glfw-3.3.9\src\glfw3.lib
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Ob0 /Od /RTC1 -ZI
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = libs\glfw-3.3.9\src\glfw3.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib

@@ -9,7 +9,7 @@ SphereObject::SphereObject(glm::vec3 position, int subdivisions)
 {
 	this->position = position;
 	float radius = 0.5f;
-	for (int i = 0; i < subdivisions; i++)
+	for (int i = 0; i < subdivisions/2; i++)
 	{
 		float phi = static_cast<float>(i) / (subdivisions - 1) * 2.f * glm::pi<float>();
 		float y = std::cos(phi) * radius;
@@ -19,8 +19,10 @@ SphereObject::SphereObject(glm::vec3 position, int subdivisions)
 			float Theta = static_cast<float>(j) / (subdivisions - 1) * 2.f * glm::pi<float>();
 			float x = sphereRadius * std::sin(Theta);
 			float z = sphereRadius * std::cos(Theta);
-			vertices.emplace_back(glm::vec3(x, y, z));
-			vertices.back().Normal = glm::vec3(0.5f);
+				vertices.emplace_back(glm::vec3(x, -y, z));
+				vertices.back().Normal = glm::vec3(0.5f);
+				if (vertices.back().position.y < lowestpoint.second)
+					lowestpoint = std::make_pair(vertices.size() - 1, vertices.back().position.y);
 		}
 		int sphereStartIndex = 0;
 		for (int f = 0; f < subdivisions - 1; f++) {
@@ -50,6 +52,10 @@ void SphereObject::Draw(unsigned int shader_program)
 	glUniform3fv(glGetUniformLocation(shader_program, "material.specular"), 1, glm::value_ptr(glm::vec3(0.2f)));
 	glUniform1f(glGetUniformLocation(shader_program, "material.shininess"), 32.f);
 	glDrawElements(GL_TRIANGLES, static_cast<int>(indices.size()*3), GL_UNSIGNED_INT, nullptr);
+}
+void SphereObject::UpdatePos(glm::vec3 new_pos)
+{
+	position = new_pos;
 }
 void SphereObject::Init()
 {

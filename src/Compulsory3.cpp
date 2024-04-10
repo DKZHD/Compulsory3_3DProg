@@ -10,6 +10,8 @@
 #include "Mesh/Mesh.h"
 #include "Terrain/Terrain.h"
 #include "Mesh/Player.h"
+#include "Mesh/Path.h"
+#include "Core/Core.h"
 
 float DeltaTime = 0.f;
 void Input(GLFWwindow* _window, Camera& _camera, Player& _player)
@@ -86,26 +88,7 @@ void MouseMovement(GLFWwindow* window, double xpos, double ypos)
 }
 int main()
 {
-	glfwInit();
-	GLFWwindow* window = glfwCreateWindow(1920, 1080, "Compulsory 3", nullptr, nullptr);
-	if(!window)
-	{
-		glfwTerminate();
-		return -1;
-	}
-	glfwMakeContextCurrent(window);
-	if(!gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress)))
-	{
-		std::cout << "Failed to initialize GLAD" << std::endl;
-		return -1;
-	}
-	glViewport(0, 0, 1920, 1080);
-	glEnable(GL_DEPTH_TEST);
-	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-	glfwSetCursorPosCallback(window, MouseMovement);
-
-	glfwSwapInterval(0.f);
-
+	GLFWwindow* window = Core::Init(1280,720,"Compulsory 3",MouseMovement);
 	Shader defaultShader;
 	defaultShader.InitProgram("shaderSource.shader");
 	defaultShader.Use();
@@ -113,9 +96,13 @@ int main()
 	Terrain terrain;
 	terrain.CreateTerrain(5.f, 50.f);
 
+	Path path;
+	path.GeneratePath(glm::vec3(3.f,0.f,3.f),glm::vec3(30.f,0.f,30.f),terrain);
+
 	Player player(glm::vec3(3.f,2.f,3.f));
 
-	SphereObject sphere(glm::vec3(5.f, 2.f, 5.f), 32);
+	SphereObject sphere(glm::vec3(5.f, 0.f, 5.f), 32);
+	SphereObject sphereOnSurface(glm::vec3(8.f, terrain.CheckHeight(glm::vec3(8.f, 0.f, 10.f)).second-0.45f, 10.f), 32);
 
 	Shader shadowShader;
 	shadowShader.InitProgram("depthSource.shader");
@@ -140,8 +127,6 @@ int main()
 	glReadBuffer(GL_NONE);
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-	
-
 	float lastTime = glfwGetTime();
 	while (!glfwWindowShouldClose(window))
 	{
@@ -151,9 +136,9 @@ int main()
 		/*std::cout << DeltaTime << "\n";*/
 		/*std::cout << "FPS: " << 1.f / DeltaTime << "\n";*/
 
-		float near = 1.f, far = 30.f;
-		glm::mat4 lightProj = glm::ortho(-10.f, 10.f,-10.f,10.f,near, far);
-		glm::mat4 lightView = glm::lookAt(glm::vec3(0.f, 3.f, 6.f), glm::vec3(3.f,1.f,6.f), glm::vec3(0.f, 1.f, 0.f));
+		float near = 1.f, far = 50.f;
+		glm::mat4 lightProj = glm::ortho(-25.f, 25.f,-25.f,25.f,near, far);
+		glm::mat4 lightView = glm::lookAt(glm::vec3(-5.f, 5.f, 10.f), glm::vec3(5.f,0.f,15.f), glm::vec3(0.f, 1.f, 0.f));
 		glm::mat4 LightMatrix = lightProj * lightView;
 		shadowShader.Use();
 		glUniformMatrix4fv(glGetUniformLocation(shadowShader.Program, "lightMatrix"), 1, GL_FALSE, glm::value_ptr(LightMatrix));
@@ -162,9 +147,11 @@ int main()
 		glClear(GL_DEPTH_BUFFER_BIT);
 		player.Draw(shadowShader.Program);
 		terrain.Draw(shadowShader.Program);
+		sphere.Draw(shadowShader.Program);
+		sphereOnSurface.Draw(shadowShader.Program);
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-		glViewport(0, 0, 1920, 1080);
+		glViewport(0, 0, 1280, 720);
 		glClearColor(0.f, 0.7f, 0.7f, 1.f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		defaultShader.Use();
@@ -178,7 +165,10 @@ int main()
 			player.UpdatePosition(glm::vec3(player.GetPosition().x, height.second, player.GetPosition().z));
 		}
 		player.Draw(defaultShader.Program);
+		path.MoveObject(sphere, DeltaTime, terrain);
 		sphere.Draw(defaultShader.Program);
+		sphereOnSurface.Draw(defaultShader.Program);
+		path.Draw(defaultShader.Program);
 		Input(window, camera, player);
 		player.Update(DeltaTime);
 		

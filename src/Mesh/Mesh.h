@@ -23,10 +23,13 @@ class SphereObject {
 public:
 	SphereObject(glm::vec3 position, int subdivisions);
 	void Draw(unsigned int shader_program);
+	void UpdatePos(glm::vec3 new_pos);
+	glm::vec3 position;
+	std::pair<int, float> lowestpoint;
 private:
 	unsigned int VAO, VBO, EBO;
 	void Init();
-	glm::vec3 position;
+	
 	std::vector<Vertex> vertices;
 	std::vector<Triangle> indices;
 };

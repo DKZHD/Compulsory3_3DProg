@@ -115,6 +115,7 @@ void Player::Draw(unsigned int& shader_program)
 {
 	glBindVertexArray(VAO);
 	glm::mat4 model = glm::mat4(1.f);
+	//std::cout << "X: " << position.x << " Y: " << position.y << " Z: " << position.z << std::endl;
 	model = glm::translate(glm::mat4(1.f), glm::vec3(position.x,position.y+0.15f,position.z));
 	glUniformMatrix4fv(glGetUniformLocation(shader_program, "model"), 1, GL_FALSE, glm::value_ptr(model));
 	glUniform3fv(glGetUniformLocation(shader_program,"material.diffuse"),1, glm::value_ptr(glm::vec3(0.5,0.f,0.f)));

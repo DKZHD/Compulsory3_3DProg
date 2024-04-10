@@ -58,7 +58,6 @@ void Terrain::CreateTerrain(float resolution, float size)
     SetupBuffers();
 }
 
-
 void Terrain::Draw(unsigned int& shader_program)
 {
     glBindVertexArray(VAO);
@@ -99,7 +98,7 @@ std::pair<bool, float> Terrain::CheckHeight(glm::vec3 position)
         return std::make_pair(false, 0.f);
     }
     float height = BarycentricCalculation(vertices[p1Index].position, vertices[p2Index].position, vertices[p3Index].position, PosVec2);
-    if (position.y < height) {
+    if (position.y <= height) {
         return std::make_pair(true, height);
     }
     return std::make_pair(false, 0.f);
